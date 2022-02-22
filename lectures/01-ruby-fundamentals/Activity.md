@@ -27,7 +27,7 @@ You will be doing all of the following in `lib/cli.rb`
 
 5. Below the `patients` array, create a `clinics` array with a few clinics in it. Each `clinic` should be a hash with the following key / value pairs: `id` (Integer), `clinic_name` (String), `address` (String), `phone` (String).
 
-6. Add a `puts` to your menu: `2. List All Clinics`. Add a case `2` to your case statement that `puts` an array of the `name`s of all Patients. (`map`)
+6. Add a `puts` to your menu: `2. List All Clinics`.
 
 7. Use `gets.strip` to get an input from a user. Create an `if` or `case` statement with the following conditions: If the user inputs `2`, iterate through the `clinics` array and `puts` all the Clinic information (i.e., `id`, `clinic_name`, `address`, `phone`).
 
