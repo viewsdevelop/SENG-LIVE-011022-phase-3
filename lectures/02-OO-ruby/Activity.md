@@ -15,7 +15,7 @@ Today, we'll be creating a `Patient` class to add consistency / reusability and 
 
 2. Create a `Patient` Class in `Patient.rb`. Back in `cli.rb`, refactor `create_patient` to `puts Patient.new` to the Terminal console. Test that a Patient is being created. You should see `#<Patient:some mix of numbers and characters>` in your Terminal console.
 
-3. In the Patient class, create an `initialize` method that takes `species`, `age`, `name`, `owner` and `phone`  as params. Create corresponding instance variables (i.e., `@species`) for these params, assigning their values as necessary.
+3. In the `Patient` class, create an `initialize` method that takes `species`, `age`, `name`, `owner` and `phone`  as params. Create corresponding instance variables (i.e., `@species`) for these params, assigning their values as necessary.
 
 ## Break Out Activity #2
 
