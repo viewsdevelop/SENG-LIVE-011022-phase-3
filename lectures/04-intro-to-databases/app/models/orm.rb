@@ -3,12 +3,11 @@ class PatientORM
     attr_reader :species
 
     # Will this create a new record in DB or not?
-    def initialize(attributes) 
+    def initialize(attributes)
         # ACTIVITY 1 => Use mass assignment to allow attributes to be 
         # passed into initialize() as key / value pairs
 
-        # Example Case:
-        # patientORM.new(
+        # PatientORM.new(
         #     name: "Grace", 
         #     age: 1, 
         #     owner: "Sally",
@@ -17,8 +16,18 @@ class PatientORM
         # )
 
         # method hints => ".each", ".respond_to?", ".send"
-        # https://apidock.com/ruby/Object/respond_to%3F
-        # https://apidock.com/ruby/Object/send
+
+        # iterate over attributes
+        attributes.each do |key, value| 
+            
+            # make sure that the key exists for what we're trying
+            # to create
+            if self.respond_to?("#{key.to_s}=") 
+                
+                # send key / value pairing
+                self.send("#{key.to_s}=", value) 
+            end 
+        end
     end
 
     def save
@@ -31,10 +40,13 @@ class PatientORM
         
         # ACTIVITY 1 => Use "execute" and "last_insert_row_id" to add new
         # PatientORM class instances to DB with appropriate IDs
-        # https://www.rubydoc.info/github/luislavena/sqlite3-ruby/SQLite3/Database#execute-instance_method
-        # https://www.rubydoc.info/github/luislavena/sqlite3-ruby/SQLite3%2FDatabase:last_insert_row_id
 
         # NOTE => Remember to return "self" instance
+        DB.execute(sql, self.species, self.name, self.age, self.owner, self.number)
+        @id = DB.last_insert_row_id
+        
+        # return new patient instance
+        self 
     end
 
     def self.create(args)
@@ -42,15 +54,30 @@ class PatientORM
         # create / add new PatientORM class instances to DB
         
         # NOTE => Remember to return "patient" instance
+
+        # Instantiate PatientORM Class
+        patient = PatientORM.new(args)
+        
+        # Save patient to DB
+        patient.save
+        
+        # Return new patient instance
+        patient
     end
 
     def self.all 
         # ACTIVITY 2 => Use "DB.execute()" + SQL to retrieve all 
         # patients from table.
+
+        resources = DB.execute("SELECT * FROM patients")
         
         # HINT => Use ".map" and "self.new" to create an array of "mapped_resources"
+        mapped_resources = resources.map do |patient|
+            self.new(patient)
+        end
 
-        # NOTE => Remember to return "mapped_resources" as an iterable list
+        mapped_resources
+        # NOTE => Remember to return "mapped_resources" as an iterable (countable) list
         # of patients
     end
 
