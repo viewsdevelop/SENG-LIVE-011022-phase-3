@@ -73,3 +73,7 @@ class PatientORM
         DB.execute(sql)
     end 
 end 
+
+# HTML => Skeleton
+# CSS => Clothing / Hair / Style
+# JavaScript => Interactivity, "Life"

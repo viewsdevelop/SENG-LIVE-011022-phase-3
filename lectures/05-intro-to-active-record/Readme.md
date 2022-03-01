@@ -104,10 +104,10 @@ rake db:seed                # Loads the seed data from db/seeds.rb
 ## Order of operation 
 0. Draw out your domain models
 1. Run `bundle install`
-2. Create migration files
-3. Write OO Ruby tables + columns
+2. Create Migrations
+3. Create Tables
 4. Run `rake db:migrate` and verify `schema.rb`
-5. Create models and relationships
-6. Test models and relationships in console 
-7. Create seeds and verify that they were created via console
-8. Create custom methods and test each in console as they are written
+5. Create Models and relationships
+6. Test Models and relationships in console 
+7. Create Seeds and verify that they were created via console
+8. Create custom methods and test each method in console as they are written

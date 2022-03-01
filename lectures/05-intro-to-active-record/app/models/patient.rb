@@ -3,5 +3,5 @@ class Patient < ActiveRecord::Base
     # What useful instance methods are made available to us through 'belongs_to'?
     # https://guides.rubyonrails.org/association_basics.html#methods-added-by-belongs-to
 
-    # belongs_to :clinic
+    belongs_to :clinic
 end
