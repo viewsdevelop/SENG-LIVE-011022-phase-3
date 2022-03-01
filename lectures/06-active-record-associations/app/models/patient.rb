@@ -5,6 +5,9 @@ class Patient < ActiveRecord::Base
 
     # Add necessary "has_many" Active Record macros to associate
     # one Patient with many Appointments and many Vets through Appointments.
+    
+    has_many :appointments
+    has_many :vets, through: :appointments
 
     # NOTE => Remember that the order of Active Record macros matters!
 end 

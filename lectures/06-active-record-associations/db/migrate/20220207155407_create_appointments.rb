@@ -12,5 +12,14 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
   # https://api.rubyonrails.org/v5.1/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-references
   
   def change
+    create_table :appointments do |t|
+      # vet_id
+      t.references :vet
+      
+      # patient_id
+      t.references :patient
+      
+      t.date :date
+    end  
   end
 end

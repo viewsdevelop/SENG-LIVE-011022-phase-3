@@ -3,4 +3,7 @@
 class Appointment < ActiveRecord::Base
     # Add necessary "belongs_to" Active Record macros to associate
     # one Appointment with one Vet and one Patient.
+    belongs_to :patient
+    belongs_to :vet
 end 
+

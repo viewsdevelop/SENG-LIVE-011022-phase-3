@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_02_07_155407) do
 
+  create_table "appointments", force: :cascade do |t|
+    t.integer "vet_id"
+    t.integer "patient_id"
+    t.date "date"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+    t.index ["vet_id"], name: "index_appointments_on_vet_id"
+  end
+
   create_table "clinics", force: :cascade do |t|
     t.string "clinic_name"
     t.string "address"
@@ -30,6 +38,11 @@ ActiveRecord::Schema.define(version: 2022_02_07_155407) do
     t.integer "clinic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "vets", force: :cascade do |t|
+    t.string "vet_name"
+    t.string "speciality"
   end
 
 end
