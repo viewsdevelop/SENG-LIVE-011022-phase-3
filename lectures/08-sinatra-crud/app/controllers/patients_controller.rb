@@ -1,3 +1,6 @@
+# Ruby => JSON => JS 
+# JS => JSON => Ruby
+
 class PatientsController < ApplicationController
 
     # CREATE (POST) (ONE)
@@ -18,9 +21,12 @@ class PatientsController < ApplicationController
         # send a response with the created patient as JSON
         # ❗ why send created instance as a response?
         patient.to_json
+
+        # Redirect to => /patients/31
     end
 
     # READ (GET) (ALL)
+    # localhost:9292/patients
     get '/patients' do
         
         # demand is sent to Patient Model
@@ -44,6 +50,7 @@ class PatientsController < ApplicationController
 
     # UPDATE (PATCH) (ONE)
     patch '/patients/:id' do
+
         # binding.pry
         
         # find the patient using the ID
@@ -66,10 +73,8 @@ class PatientsController < ApplicationController
     delete '/patients/:id' do
         # find the patient using the ID
         patient = Patient.find(params[:id])
-
         # delete the patient
         patient.destroy
-        
         # send a response with the deleted patient as JSON
         # ❗ why send deleted instance as a response?
         patient.to_json
